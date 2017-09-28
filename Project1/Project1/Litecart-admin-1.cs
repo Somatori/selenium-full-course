@@ -67,6 +67,33 @@ namespace litecart
             }
         }
 
+        [Test]
+        public void LitecartStickersForGoodsOnMainPage()
+        {
+            driver.Url = "http://localhost/litecart/en/";
+
+            IList<IWebElement> goods = driver.FindElements(By.XPath("//div[@class='image-wrapper']"));
+            int amountOfGoods = goods.Count;
+
+            for (int i = 0; i < amountOfGoods; i++)
+            {
+                Assert.IsTrue(IsElementPresent(goods[i], By.CssSelector("div[class^='sticker ']")));
+            }
+        }
+
+        public bool IsElementPresent(IWebElement webElement, By by)
+        {
+            try
+            {
+                webElement.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public bool IsElementPresent(By by)
         {
             try
