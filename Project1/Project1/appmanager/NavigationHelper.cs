@@ -19,6 +19,16 @@ namespace litecart
         }
 
 
+        public void GoToPage(string url)
+        {
+            if (driver.Url == url)
+            {
+                return;
+            }
+
+            driver.Navigate().GoToUrl(url);
+        }
+
         public void GoToLoginPage()
         {
             if (driver.Url == baseURL + "/litecart/admin/n")
@@ -37,6 +47,16 @@ namespace litecart
             }
 
             driver.Navigate().GoToUrl(baseURL + "/litecart/admin/?app=countries&doc=countries");
+        }
+
+        internal void GoToGeoZonesPage()
+        {
+            if (driver.Url == baseURL + "/litecart/admin/?app=geo_zones&doc=geo_zones")
+            {
+                return;
+            }
+
+            driver.Navigate().GoToUrl(baseURL + "/litecart/admin/?app=geo_zones&doc=geo_zones");
         }
     }
 }

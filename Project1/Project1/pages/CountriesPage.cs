@@ -26,14 +26,18 @@ namespace litecart
         [FindsBy(How = How.XPath, Using = "//tr[@class='row']/td[6]")]
         public IList<IWebElement> ListOfAmountOfCountryZones;
 
-        [FindsBy(How = How.XPath, Using = "//tr[@class='row']/td[5]/a")]
+        [FindsBy(How = How.XPath, Using = "//table[@id='table-zones']//td[3]")]
         public IList<IWebElement> ListOfCountryZoneNames;
 
 
-        //public IWebElement ContactInGrid(ContactData contact)
-        //{
-        //    By locator = By.XPath("//td[@class='email']/span[text()='" + contact.Email + "']");
-        //    return WaitForElement(locator);
-        //}
+        public IWebElement ZonesValueForCountry(IWebElement webElement)
+        {
+            return webElement.FindElement(By.XPath(".//td[6]"));
+        }
+
+        public IWebElement Country(IWebElement webElement)
+        {
+            return webElement.FindElement(By.XPath(".//td[5]/a"));
+        }
     }
 }

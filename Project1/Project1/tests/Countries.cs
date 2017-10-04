@@ -41,40 +41,38 @@ namespace litecart
             app.Navigator.GoToCountriesPage();
 
             // action
+            List<string> ListOfUrlsToGo = new List<string>();
+
             foreach (IWebElement webElement in app.Pages.Countries.ListOfCountries)
             {
-                app.Navigator.GoToCountriesPage();
-
-                IWebElement zones = webElement.FindElement(By.XPath(".//td[6]"));
+                IWebElement zones = app.Pages.Countries.ZonesValueForCountry(webElement);
                 int amount = Convert.ToInt32(zones.Text);
+
                 if (amount > 0)
                 {
-                    webElement.FindElement(By.XPath(".//td[5]/a")).Click();
-                    IList<IWebElement> ListOfCountryZoneNames = app.Pages.Countries.ListOfCountryZoneNames;
-                    List<string> ListOfCoutryZonesAsIs = new List<string>();
-                    List<string> ListOfCoutryZonesWithSorting = new List<string>();
+                    ListOfUrlsToGo.Add(app.Pages.Countries.Country(webElement).GetAttribute("href"));
+                }
+            }
 
-                    for (int i = 0; i < amount; i++)
-                    {
-                        ListOfCoutryZonesAsIs.Add(ListOfCountryZoneNames[i].GetAttribute("textContent"));
-                        ListOfCoutryZonesWithSorting.Add(ListOfCountryZoneNames[i].GetAttribute("textContent"));
-                    }
+            foreach (string url in ListOfUrlsToGo)
+            {
+                app.Navigator.GoToPage(url);
 
-                    ListOfCoutryZonesWithSorting.Sort();
+                IList<IWebElement> ListOfCountryZoneNames = app.Pages.Countries.ListOfCountryZoneNames;
+                int amountOfZones = app.Pages.Countries.ListOfCountryZoneNames.Count - 1;
+                List<string> ListOfCoutryZonesAsIs = new List<string>();
+                List<string> ListOfCoutryZonesWithSorting = new List<string>();
 
-                    // verification
-                    Assert.AreEqual(ListOfCoutryZonesAsIs, ListOfCoutryZonesWithSorting);
-
-                    //foreach (IWebElement webElement2 in app.Pages.Countries.ListOfCountryZoneNames)
-                    //{
-                    //    ListOfCoutryZonesAsIs.Add(webElement2.GetAttribute("textContent"));
-                    //    ListOfCoutryZonesWithSorting.Add(webElement2.GetAttribute("textContent"));
-                    //}
-
-
+                for (int i = 0; i < amountOfZones; i++)
+                {
+                    ListOfCoutryZonesAsIs.Add(ListOfCountryZoneNames[i].GetAttribute("textContent"));
+                    ListOfCoutryZonesWithSorting.Add(ListOfCountryZoneNames[i].GetAttribute("textContent"));
                 }
 
+                ListOfCoutryZonesWithSorting.Sort();
 
+                // verification
+                Assert.AreEqual(ListOfCoutryZonesAsIs, ListOfCoutryZonesWithSorting);
             }
         }
     }

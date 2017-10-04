@@ -18,6 +18,7 @@ namespace litecart
             Internal = InitElements(new InternalPage(this));
             Login = InitElements(new LoginPage(this));
             Countries = InitElements(new CountriesPage(this));
+            GeoZones = InitElements(new GeoZonesPage(this));
         }
 
         private T InitElements<T>(T page) where T : AnyPage
@@ -30,5 +31,6 @@ namespace litecart
         public InternalPage Internal { get; set; }
         public LoginPage Login { get; set; }
         public CountriesPage Countries { get; set; }
+        public GeoZonesPage GeoZones { get; set; }
     }
 }

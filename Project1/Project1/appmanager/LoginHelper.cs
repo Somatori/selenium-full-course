@@ -22,11 +22,13 @@ namespace litecart
         {
             if (IsLoggedIn())
             {
-                if (IsLoggedIn(account))
-                {
-                    return;
-                }
-                Logout();
+                return;
+
+                //if (IsLoggedIn(account))
+                //{
+                //    return;
+                //}
+                //Logout();
             }
             
             manager.Navigator.GoToLoginPage();
@@ -45,15 +47,15 @@ namespace litecart
 
         public bool IsLoggedIn(AccountData account)
         {
-            return IsLoggedIn()
-                && GetLoggedUserName() == account.Username;
+            return IsLoggedIn();
+                //&& GetLoggedUserName() == account.Username;
         }
 
-        public string GetLoggedUserName()
-        {
-            string text = pages.Internal.UserTitleInDropdownMenu.Text;
-            return text;
-        }
+        //public string GetLoggedUserName()
+        //{
+        //    //string text = pages.Internal.UserTitleInDropdownMenu.Text;
+        //    /return text;
+        //}
 
         public void Logout()
         {

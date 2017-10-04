@@ -20,13 +20,10 @@ namespace litecart
         [FindsBy(How = How.CssSelector, Using = "a[href='http://localhost/litecart/admin/logout.php']")]
         public IWebElement LogoutLink;
 
-        [FindsBy(How = How.CssSelector, Using = "rp-dropdown-title.menu-title")]
-        public IWebElement UserTitleInDropdownMenu;
+        //[FindsBy(How = How.CssSelector, Using = "rp-dropdown-title.menu-title")]
+        //public IWebElement UserTitleInDropdownMenu;
 
         [FindsBy(How = How.LinkText, Using = "Logout")]
         public IWebElement LogoutLinkInDropdownMenu;
-
-        [FindsBy(How = How.XPath, Using = "//iframe[starts-with(@id, 'uiTinymce')]")]
-        public IWebElement IframeUiTinymce;
     }
 }
