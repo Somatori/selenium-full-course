@@ -7,23 +7,23 @@ using System.Text.RegularExpressions;
 
 namespace litecart
 {
-    public class ContactData
+    public class ItemData
     {
-        public ContactData()
+        public ItemData()
         {
         }
 
-        public ContactData(string email, string firstName)
-        {
-            Email = email;
-            FirstName = firstName;
-        }
+        //public ItemData()
+        //{
+        //    Name = name;
+        //    RegularPrice = regularPrice;
+        //}
 
-        public string Email { get; set; }
+        public string Name { get; set; }
 
-        public string FirstName { get; set; }
+        public string RegularPrice { get; set; }
 
-        public string LastName { get; set; }
+        public string CampaignPrice { get; set; }
 
         public string Phone { get; set; }
 

@@ -29,6 +29,16 @@ namespace litecart
             driver.Navigate().GoToUrl(url);
         }
 
+        public void GoToMainPage()
+        {
+            if (driver.Url == baseURL + "/litecart/en/")
+            {
+                return;
+            }
+
+            driver.Navigate().GoToUrl(baseURL + "/litecart/en/");
+        }
+
         public void GoToLoginPage()
         {
             if (driver.Url == baseURL + "/litecart/admin/n")

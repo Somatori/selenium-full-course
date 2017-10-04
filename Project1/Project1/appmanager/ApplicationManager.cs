@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -21,23 +22,23 @@ namespace litecart
 
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
-        protected ContactHelper contactHelper;
+        protected ItemHelper itemHelper;
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
-            //ChromeOptions chromeOptions = new ChromeOptions();
-            //chromeOptions.AddArguments("--start-maximized");
-            driver = new ChromeDriver();
-            driver.Manage().Window.Size = new Size(1280, 768);
+            driver = new EdgeDriver();
+            //driver = new FirefoxDriver();
+            //driver = new ChromeDriver();
+            //driver.Manage().Window.Size = new Size(1280, 768);
             baseURL = "http://localhost";
 
             pageManager = new PageManager(this);
 
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
-            contactHelper = new ContactHelper(this);
+            itemHelper = new ItemHelper(this);
         }
 
         ~ApplicationManager()
@@ -96,11 +97,11 @@ namespace litecart
             }
         }
 
-        public ContactHelper Contacts
+        public ItemHelper Items
         {
             get
             {
-                return contactHelper;
+                return itemHelper;
             }
         }
     }

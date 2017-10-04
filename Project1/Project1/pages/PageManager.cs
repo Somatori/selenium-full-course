@@ -19,6 +19,9 @@ namespace litecart
             Login = InitElements(new LoginPage(this));
             Countries = InitElements(new CountriesPage(this));
             GeoZones = InitElements(new GeoZonesPage(this));
+            Main = InitElements(new MainPage(this));
+            Item = InitElements(new ItemPage(this));
+
         }
 
         private T InitElements<T>(T page) where T : AnyPage
@@ -32,5 +35,9 @@ namespace litecart
         public LoginPage Login { get; set; }
         public CountriesPage Countries { get; set; }
         public GeoZonesPage GeoZones { get; set; }
+        public MainPage Main { get; set; }
+        public ItemPage Item { get; set; }
+
+
     }
 }
