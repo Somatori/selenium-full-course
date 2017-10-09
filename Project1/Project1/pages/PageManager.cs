@@ -21,6 +21,9 @@ namespace litecart
             GeoZones = InitElements(new GeoZonesPage(this));
             Main = InitElements(new MainPage(this));
             Item = InitElements(new ItemPage(this));
+            CustomerLogin = InitElements(new CustomerLoginPage(this));
+            Registration = InitElements(new CreateAccountPage(this));
+
 
         }
 
@@ -37,6 +40,9 @@ namespace litecart
         public GeoZonesPage GeoZones { get; set; }
         public MainPage Main { get; set; }
         public ItemPage Item { get; set; }
+        public CustomerLoginPage CustomerLogin { get; set; }
+        public CreateAccountPage Registration { get; set; }
+
 
 
     }

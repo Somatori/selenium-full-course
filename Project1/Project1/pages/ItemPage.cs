@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace litecart
 {
-    public class ItemPage : InternalPage
+    public class ItemPage : AnyPage
     {
         public ItemPage(PageManager pages) : base(pages)
         {

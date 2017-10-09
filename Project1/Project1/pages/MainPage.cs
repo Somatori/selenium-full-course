@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace litecart
 {
-    public class MainPage : InternalPage
+    public class MainPage : AnyPage
     {
         public MainPage(PageManager pages) : base(pages)
         {
@@ -19,6 +19,18 @@ namespace litecart
 
         [FindsBy(How = How.XPath, Using = "//div[@id='box-campaigns']//li/a[1]")]
         public IWebElement TheFirstItemInCampaingsSection;
+
+        [FindsBy(How = How.LinkText, Using = "Logout")]
+        public IWebElement LogoutLink;
+
+        [FindsBy(How = How.Name, Using = "email")]
+        public IWebElement EmailAddresFieldInLoginSection;
+
+        [FindsBy(How = How.Name, Using = "password")]
+        public IWebElement PasswordFieldInLoginSection;
+
+        [FindsBy(How = How.Name, Using = "login")]
+        public IWebElement LoginButtonInLoginSection;
 
 
         public IWebElement ItemName(IWebElement webElement)

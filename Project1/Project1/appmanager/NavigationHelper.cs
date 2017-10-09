@@ -68,5 +68,15 @@ namespace litecart
 
             driver.Navigate().GoToUrl(baseURL + "/litecart/admin/?app=geo_zones&doc=geo_zones");
         }
+
+        internal void GoToCreateAccountPage()
+        {
+            if (driver.Url == baseURL + "/litecart/en/create_account")
+            {
+                return;
+            }
+
+            driver.Navigate().GoToUrl(baseURL + "/litecart/en/create_account");
+        }
     }
 }
