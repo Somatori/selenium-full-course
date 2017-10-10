@@ -23,6 +23,8 @@ namespace litecart
             Item = InitElements(new ItemPage(this));
             CustomerLogin = InitElements(new CustomerLoginPage(this));
             Registration = InitElements(new CreateAccountPage(this));
+            Catalog = InitElements(new CatalogPage(this));
+            Catalog_AddNewProduct = InitElements(new CatalogPage_AddNewProduct(this));
 
 
         }
@@ -42,6 +44,8 @@ namespace litecart
         public ItemPage Item { get; set; }
         public CustomerLoginPage CustomerLogin { get; set; }
         public CreateAccountPage Registration { get; set; }
+        public CatalogPage Catalog { get; set; }
+        public CatalogPage_AddNewProduct Catalog_AddNewProduct { get; set; }
 
 
 

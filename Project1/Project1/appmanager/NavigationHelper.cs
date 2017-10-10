@@ -78,5 +78,15 @@ namespace litecart
 
             driver.Navigate().GoToUrl(baseURL + "/litecart/en/create_account");
         }
+
+        internal void GoToCatalogPage()
+        {
+            if (driver.Url == baseURL + "/litecart/admin/?app=catalog&doc=catalog")
+            {
+                return;
+            }
+
+            driver.Navigate().GoToUrl(baseURL + "/litecart/admin/?app=catalog&doc=catalog");
+        }
     }
 }

@@ -24,15 +24,17 @@ namespace litecart
         protected NavigationHelper navigator;
         protected ItemHelper itemHelper;
         protected CustomerAccountHelper customerAccountHelper;
+        protected CatalogHelper catalogHelper;
+
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
             //driver = new EdgeDriver();
-            //driver = new FirefoxDriver();
-            driver = new ChromeDriver();
-            driver.Manage().Window.Size = new Size(1280, 768);
+            driver = new FirefoxDriver();
+            //driver = new ChromeDriver();
+            //driver.Manage().Window.Size = new Size(1280, 768);
             baseURL = "http://localhost";
 
             pageManager = new PageManager(this);
@@ -41,6 +43,7 @@ namespace litecart
             navigator = new NavigationHelper(this, baseURL);
             itemHelper = new ItemHelper(this);
             customerAccountHelper = new CustomerAccountHelper(this);
+            catalogHelper = new CatalogHelper(this);
 
         }
 
@@ -62,7 +65,7 @@ namespace litecart
             if (! app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.Navigator.GoToLoginPage();
+                //newInstance.Navigator.GoToLoginPage();
                 app.Value = newInstance;
             }
             return app.Value;
@@ -113,6 +116,14 @@ namespace litecart
             get
             {
                 return customerAccountHelper;
+            }
+        }
+
+        public CatalogHelper Catalog
+        {
+            get
+            {
+                return catalogHelper;
             }
         }
     }
