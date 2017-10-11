@@ -71,11 +71,13 @@
     <Compile Include="pages\CatalogPage.cs" />
     <Compile Include="pages\ItemPage.cs" />
     <Compile Include="pages\CustomerLoginPage.cs" />
+    <Compile Include="pages\CartPage.cs" />
     <Compile Include="pages\MainPage.cs" />
     <Compile Include="pages\GeoZonesPage.cs" />
     <Compile Include="tests\AuthTestBase.cs" />
     <Compile Include="tests\CustomerAccounts.cs" />
     <Compile Include="tests\Catalog.cs" />
+    <Compile Include="tests\Cart.cs" />
     <Compile Include="tests\Goods.cs" />
     <Compile Include="tests\GeoZones.cs" />
     <Compile Include="tests\Litecart-admin-1.cs" />

@@ -25,5 +25,11 @@ namespace litecart
 
         [FindsBy(How = How.CssSelector, Using = "strong.campaign-price")]
         public IWebElement ItemCampaignPrice;
+
+        [FindsBy(How = How.Name, Using = "options[Size]")]
+        public IWebElement SizeField;
+
+        [FindsBy(How = How.Name, Using = "add_cart_product")]
+        public IWebElement AddToCartButton;
     }
 }

@@ -25,8 +25,7 @@ namespace litecart
             Registration = InitElements(new CreateAccountPage(this));
             Catalog = InitElements(new CatalogPage(this));
             Catalog_AddNewProduct = InitElements(new CatalogPage_AddNewProduct(this));
-
-
+            Cart = InitElements(new CartPage(this));
         }
 
         private T InitElements<T>(T page) where T : AnyPage
@@ -46,8 +45,6 @@ namespace litecart
         public CreateAccountPage Registration { get; set; }
         public CatalogPage Catalog { get; set; }
         public CatalogPage_AddNewProduct Catalog_AddNewProduct { get; set; }
-
-
-
+        public CartPage Cart { get; set; }
     }
 }

@@ -32,9 +32,9 @@ namespace litecart
         private ApplicationManager()
         {
             //driver = new EdgeDriver();
-            driver = new FirefoxDriver();
-            //driver = new ChromeDriver();
-            //driver.Manage().Window.Size = new Size(1280, 768);
+            //driver = new FirefoxDriver();
+            driver = new ChromeDriver();
+            driver.Manage().Window.Size = new Size(1280, 768);
             baseURL = "http://localhost";
 
             pageManager = new PageManager(this);

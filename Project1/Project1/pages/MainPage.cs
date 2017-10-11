@@ -32,6 +32,9 @@ namespace litecart
         [FindsBy(How = How.Name, Using = "login")]
         public IWebElement LoginButtonInLoginSection;
 
+        [FindsBy(How = How.XPath, Using = "(//div[@id='box-most-popular']//li/a[1])[1]")]
+        public IWebElement TheFirstItemInMostPopularSection;
+
 
         public IWebElement ItemName(IWebElement webElement)
         {

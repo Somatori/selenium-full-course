@@ -24,6 +24,12 @@ namespace litecart
         [FindsBy(How = How.CssSelector, Using = "i.icon-small-19-close[ng-click='cancel()']")]
         public IWebElement CloseIconInPopupWindow;
 
+        [FindsBy(How = How.CssSelector, Using = "span.quantity")]
+        public IWebElement AmountOfItemsInCart;
+
+        [FindsBy(How = How.LinkText, Using = "Checkout »")]
+        public IWebElement CheckoutLink;
+
 
         public bool IsElementPresentAndVisible(By locator)
         {

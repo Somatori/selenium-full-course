@@ -122,8 +122,8 @@ namespace litecart
             }
             else
             {
-                Assert.Fail("ERROR! It's impossible to detect web-element.");
-                return null;
+                //Assert.Fail("ERROR! It's impossible to detect web-element.");
+                throw new TimeoutException();
             }
         }
 
@@ -160,32 +160,10 @@ namespace litecart
             return (IsElementPresentAndVisible(webElement) && webElement.Text == text);
         }
 
-        public IWebElement WaitForTextInElement(IWebElement webElement, string text)
+        public bool WaitForTextInElement(IWebElement webElement, string text)
         {
-            bool isFound = false;
-
-            for (int i = 0; i < 30; i++)
-            {
-                if (IsTextPresentAndVisibleInElement(webElement, text))
-                {
-                    isFound = true;
-                    break;
-                }
-                else
-                {
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }
-
-            if (isFound)
-            {
-                return webElement;
-            }
-            else
-            {
-                Assert.Fail("ERROR! It's impossible to detect web-element or required text in the web-element.");
-                return null;
-            }
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            return wait.Until(ExpectedConditions.TextToBePresentInElement(webElement, text));
         }
 
         public void ClosePopupWindow()
@@ -213,6 +191,12 @@ namespace litecart
                     }
                 }
             }
+        }
+
+        public bool WaitForElementDisappearance(IWebElement webElement)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            return wait.Until(ExpectedConditions.StalenessOf(webElement));
         }
     }
 }

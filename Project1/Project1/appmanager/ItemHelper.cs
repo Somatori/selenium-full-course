@@ -20,7 +20,6 @@ namespace litecart
         }
 
 
-
         public string[] RgbSeparation (string color)
         {
             string colorInRgb;
@@ -48,6 +47,31 @@ namespace litecart
             {
                 return webElement.GetCssValue("text-decoration");
             }
+        }
+
+        public void AddTheFirstItemToCart()
+        {
+            manager.Navigator.GoToMainPage();
+            WaitForElement(pages.Main.TheFirstItemInMostPopularSection).Click();
+
+            int ItemsInCartBeforeAdding = Convert.ToInt32(WaitForElement(pages.Any.AmountOfItemsInCart).Text);
+            string ItemsInCartAfterAdding = Convert.ToString((ItemsInCartBeforeAdding + 1));
+
+            if (IsElementPresentAndVisible(pages.Item.SizeField))
+            {
+                new SelectElement(pages.Item.SizeField).SelectByIndex(1);
+            }
+
+            WaitForElement(pages.Item.AddToCartButton).Click();
+            WaitForTextInElement(pages.Any.AmountOfItemsInCart, ItemsInCartAfterAdding);
+        }
+
+        public void RemoveItemFromCart()
+        {
+            manager.Navigator.GoToCartPage();
+            IWebElement element = pages.Cart.ItemsInOrderSummaryTable[0];
+            WaitForElement(pages.Cart.RemoveButton).Click();
+            WaitForElementDisappearance(element);
         }
     }
 }
