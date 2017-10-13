@@ -26,6 +26,8 @@ namespace litecart
             Catalog = InitElements(new CatalogPage(this));
             Catalog_AddNewProduct = InitElements(new CatalogPage_AddNewProduct(this));
             Cart = InitElements(new CartPage(this));
+            Countries_AddNewCountry = InitElements(new CountriesPage_AddNewCountry(this));
+
         }
 
         private T InitElements<T>(T page) where T : AnyPage
@@ -46,5 +48,6 @@ namespace litecart
         public CatalogPage Catalog { get; set; }
         public CatalogPage_AddNewProduct Catalog_AddNewProduct { get; set; }
         public CartPage Cart { get; set; }
+        public CountriesPage_AddNewCountry Countries_AddNewCountry { get; set; }
     }
 }

@@ -10,11 +10,11 @@ using NUnit.Framework;
 
 namespace litecart
 {
-    public class CatalogHelper : HelperBase
+    public class AdminHelper : HelperBase
     {
         private PageManager pages;
 
-        public CatalogHelper(ApplicationManager manager) : base(manager)
+        public AdminHelper(ApplicationManager manager) : base(manager)
         {
             this.pages = manager.Pages;
         }

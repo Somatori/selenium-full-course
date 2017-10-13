@@ -19,12 +19,11 @@ namespace litecart
         protected string baseURL;
 
         protected PageManager pageManager;
-
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
         protected ItemHelper itemHelper;
         protected CustomerAccountHelper customerAccountHelper;
-        protected CatalogHelper catalogHelper;
+        protected AdminHelper adminHelper;
 
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
@@ -34,16 +33,16 @@ namespace litecart
             //driver = new EdgeDriver();
             //driver = new FirefoxDriver();
             driver = new ChromeDriver();
-            driver.Manage().Window.Size = new Size(1280, 768);
+            //driver.Manage().Window.Size = new Size(1280, 768);
+            driver.Manage().Window.Maximize();
             baseURL = "http://localhost";
 
             pageManager = new PageManager(this);
-
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
             itemHelper = new ItemHelper(this);
             customerAccountHelper = new CustomerAccountHelper(this);
-            catalogHelper = new CatalogHelper(this);
+            adminHelper = new AdminHelper(this);
 
         }
 
@@ -119,11 +118,11 @@ namespace litecart
             }
         }
 
-        public CatalogHelper Catalog
+        public AdminHelper Admin
         {
             get
             {
-                return catalogHelper;
+                return adminHelper;
             }
         }
     }

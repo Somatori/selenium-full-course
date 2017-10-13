@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="appmanager\ApplicationManager.cs" />
-    <Compile Include="appmanager\CatalogHelper.cs" />
+    <Compile Include="appmanager\AdminHelper.cs" />
     <Compile Include="appmanager\ItemHelper.cs" />
     <Compile Include="appmanager\HelperBase.cs" />
     <Compile Include="appmanager\CustomerAccountHelper.cs" />
@@ -67,6 +67,7 @@
     <Compile Include="appmanager\NavigationHelper.cs" />
     <Compile Include="model\CustomerAccountData.cs" />
     <Compile Include="pages\CatalogPage_AddNewProduct.cs" />
+    <Compile Include="pages\AddNewCountryPage.cs" />
     <Compile Include="pages\CreateAccountPage.cs" />
     <Compile Include="pages\CatalogPage.cs" />
     <Compile Include="pages\ItemPage.cs" />

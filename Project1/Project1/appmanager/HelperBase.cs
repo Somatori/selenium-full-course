@@ -103,7 +103,7 @@ namespace litecart
         {
             bool isFound = false;
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (IsElementPresentAndVisible(webElement))
                 {
@@ -131,7 +131,7 @@ namespace litecart
         {
             bool isFound = false;
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (AreElementsPresent(webElements))
                 {
@@ -197,6 +197,27 @@ namespace litecart
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             return wait.Until(ExpectedConditions.StalenessOf(webElement));
+        }
+
+        public string WaitForNewTabOpening(ICollection<string> oldWindows)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                ICollection<string> newWindows = driver.WindowHandles;
+                string[] result = newWindows.Except<string>(oldWindows).ToArray<string>();
+
+                if (result.Count<string>() > 0)
+                {
+                    return result[0];
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(1000);
+                }
+            }
+
+            Assert.Fail("ERROR! It's impossible to detect new opened tab.");
+            return null;
         }
     }
 }

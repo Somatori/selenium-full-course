@@ -29,6 +29,9 @@ namespace litecart
         [FindsBy(How = How.XPath, Using = "//table[@id='table-zones']//td[3]")]
         public IList<IWebElement> ListOfCountryZoneNames;
 
+        [FindsBy(How = How.CssSelector, Using = "a.button")]
+        public IWebElement AddNewCountryButton;
+
 
         public IWebElement ZonesValueForCountry(IWebElement webElement)
         {

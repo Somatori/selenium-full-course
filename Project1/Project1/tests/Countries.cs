@@ -75,5 +75,29 @@ namespace litecart
                 Assert.AreEqual(ListOfCoutryZonesAsIs, ListOfCoutryZonesWithSorting);
             }
         }
+
+        [Test]
+        public void Countries_LinksInNewTabs()
+        {
+            // prepare
+            var driver = app.Driver;
+            string mainWindow = driver.CurrentWindowHandle;
+            ICollection<string> oldWindows = driver.WindowHandles;
+
+            app.Navigator.GoToCountriesPage();
+            app.Admin.WaitForElement(app.Pages.Countries.AddNewCountryButton).Click();
+
+            // links verification
+            IList<IWebElement> externalLinks = app.Admin.WaitForElements(app.Pages.Countries_AddNewCountry.ExternalLinks);
+
+            foreach (IWebElement webElement in externalLinks)
+            {
+                webElement.Click();
+                string newWindow = app.Admin.WaitForNewTabOpening(oldWindows);
+                driver.SwitchTo().Window(newWindow);
+                driver.Close();
+                driver.SwitchTo().Window(mainWindow);
+            }
+        }
     }
 }
