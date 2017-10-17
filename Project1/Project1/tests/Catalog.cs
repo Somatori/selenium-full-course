@@ -81,9 +81,10 @@ namespace litecart
 
                 foreach (LogEntry l in app.Driver.Manage().Logs.GetLog("browser"))
                 {
-                    Console.WriteLine(l);
-                    Console.WriteLine("/n");
+                    Console.WriteLine(l);                    
                 }
+
+                Console.WriteLine("/n");
             }
         }
     }
