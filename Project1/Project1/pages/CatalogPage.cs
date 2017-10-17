@@ -20,6 +20,9 @@ namespace litecart
         [FindsBy(How = How.XPath, Using = "//a[@class='button'][2]")]
         public IWebElement AddNewProductButton;
 
+        [FindsBy(How = How.XPath, Using = "//tr/td[3]/a[contains(@href, 'product_id')]")]
+        public IList<IWebElement> ItemsInCatalog;
+
 
         public IWebElement Product(string name)
         {

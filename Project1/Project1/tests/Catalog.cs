@@ -64,5 +64,27 @@ namespace litecart
             IWebElement createdProduct = app.Admin.WaitForElement(app.Pages.Catalog.Product(productName));
             Assert.IsTrue(app.Admin.IsElementPresent(createdProduct));
         }
+
+        [Test]
+        public void Catalog_BrowserLogs()
+        {
+            // open 'Ruber Ducks' catalog page
+            app.Navigator.GoToInternalPage("/litecart/admin/?app=catalog&doc=catalog&category_id=1");
+            int itemsCount = app.Admin.WaitForElements(app.Pages.Catalog.ItemsInCatalog).Count;
+
+            for (int i=0; i < itemsCount; i++)
+            {
+                app.Navigator.GoToInternalPage("/litecart/admin/?app=catalog&doc=catalog&category_id=1");
+                IList<IWebElement> items = app.Admin.WaitForElements(app.Pages.Catalog.ItemsInCatalog);
+                items[i].Click();
+                app.Admin.WaitForElement(app.Pages.Catalog_AddNewProduct.SaveButton);
+
+                foreach (LogEntry l in app.Driver.Manage().Logs.GetLog("browser"))
+                {
+                    Console.WriteLine(l);
+                    Console.WriteLine("/n");
+                }
+            }
+        }
     }
 }
